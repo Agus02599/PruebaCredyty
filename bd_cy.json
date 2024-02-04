@@ -1,0 +1,59 @@
+{
+  "vehiculos": [
+    {
+      "id": "77e7",
+      "cod": "SDFSD247D",
+      "placa": "SDFSD",
+      "tpVehiculo": "carro",
+      "hIngreso": "2024-02-03T12:51",
+      "minutos": 883,
+      "horas": 14,
+      "numFactura": 0,
+      "hSalida": "2024-02-04 03:34",
+      "vPagado": 97130
+    },
+    {
+      "id": "d8ea",
+      "cod": "5458865",
+      "placa": "545",
+      "tpVehiculo": "carro",
+      "hIngreso": "2024-02-03T22:45",
+      "minutos": 297,
+      "horas": 4,
+      "numFactura": "55",
+      "hSalida": "2024-02-04 03:42",
+      "vPagado": 22869
+    },
+    {
+      "id": "0bba",
+      "cod": "ASDF2S478S",
+      "placa": "ASDF2S",
+      "tpVehiculo": "carro",
+      "hIngreso": "2024-02-02T22:48",
+      "minutos": 1745,
+      "horas": 29,
+      "numFactura": "sas ",
+      "hSalida": "2024-02-04 03:53",
+      "vPagado": 134365
+    },
+    {
+      "id": "6713",
+      "cod": "YER40F665F",
+      "placa": "YER40F",
+      "tpVehiculo": "moto",
+      "hIngreso": "2024-02-03T23:17",
+      "minutos": 282,
+      "horas": 4,
+      "numFactura": 0,
+      "hSalida": "2024-02-04 03:59",
+      "vPagado": 14100
+    },
+    {
+      "id": "8bf7",
+      "cod": "YYY45Y318Y",
+      "placa": "YYY45Y",
+      "tpVehiculo": "carro",
+      "hIngreso": "2024-02-04T00:54"
+    }
+  ]
+}

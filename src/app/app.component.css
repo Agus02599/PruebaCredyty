@@ -1,0 +1,34 @@
+.menu-container {
+    display: flex;
+    justify-content: space-between;
+    background-color: #2196F3;
+    /* Color primario, ajusta según tus preferencias */
+    color: white;
+}
+
+.menu-container button {
+    color: white;
+    /* Color del texto en los botones, ajusta según tus preferencias */
+}
+
+.menu-container mat-icon {
+    margin-right: 8px;
+    /* Espacio entre el icono y el texto, ajusta según tus preferencias */
+}
+
+.menu-title {
+    position: relative;
+    animation: moveMenuTitle 3s infinite alternate;
+    /* Ajusta la duración según tu preferencia */
+}
+
+@keyframes moveMenuTitle {
+    from {
+        left: 0;
+    }
+
+    to {
+        left: 50%;
+        /* Ajusta la posición final según tu preferencia */
+    }
+}

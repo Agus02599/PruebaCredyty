@@ -1,0 +1,37 @@
+.ingreso-card {
+    max-width: 500px;
+    margin: auto;
+    text-align: center;
+    border: 10pc;
+}
+
+.full-width {
+    width: 100%;
+    margin-top: 16px;
+}
+
+.timepicker-overlay {
+    z-index: 1000000 !important;
+}
+
+.timepicker-backdrop-overlay {
+    z-index: 1000000 !important;
+}
+
+.mat-form-field {
+    margin-top: 16px;
+    width: 100%;
+    /* Puedes ajustar el valor según sea necesario */
+}
+
+.btn{
+    margin-left: 10px;
+}
+
+#hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
