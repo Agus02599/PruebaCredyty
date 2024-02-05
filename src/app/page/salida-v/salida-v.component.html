@@ -1,40 +1,49 @@
-<main id="hero">
-  <mat-card class="ingreso-card">
-    <mat-card-title>Salida de vehiculo</mat-card-title>
-    <mat-card-content>
-      <form [formGroup]="salidaForm">
-        <mat-form-field class="full-width">
-          <mat-label>Ticket</mat-label>
-          <input matInput placeholder="Ingrese el número del ticket" formControlName="ticket">
-          <mat-error *ngIf="salidaForm.get('ticket')?.hasError('required')">*El campo es obligatorio</mat-error>
-        </mat-form-field>
+<div class="row">
+  <div class="col-md-4">
+    <main id="hero">
+      <mat-card class="ingreso-card">
+        <mat-card-title>Salida de vehiculo</mat-card-title>
+        <mat-card-content>
+          <form [formGroup]="salidaForm">
+            <mat-form-field class="full-width">
+              <mat-label>Ticket</mat-label>
+              <input matInput placeholder="Ingrese el número del ticket" formControlName="ticket" (input)="convertirMayusculas($event)">
+              <mat-error *ngIf="salidaForm.get('ticket')?.hasError('required')">*El campo es obligatorio</mat-error>
+            </mat-form-field>
 
-        <button class="btn" mat-raised-button color="primary" [disabled]="formDesactivado"
-          (click)="buscarPlaca(salidaForm.get('ticket')?.value)">Buscar</button>
+            <button class="btn" mat-raised-button color="primary" [disabled]="!formDesactivado"
+              (click)="buscarPlaca(salidaForm.get('ticket')?.value)">Buscar</button>
 
-        @if (salidaForm.get('ticket')?.value != "" && lisV.length != 0) {
-        <br>
-        <br>
+            @if (salidaForm.get('ticket')?.value != "" && lisV.length != 0) {
+            <br>
+            <br>
 
-        <mat-checkbox class="mr-5" formControlName="descuento">¿Descuento? </mat-checkbox>
-        <br>
+            <mat-checkbox class="mr-5" formControlName="descuento">¿Descuento? </mat-checkbox>
+            <br>
 
-        <mat-form-field class="full-width mr-3" [hidden]="!salidaForm.get('descuento')?.value">
-          <input matInput placeholder="Código de Factura" formControlName="codigoFactura">
-          <mat-error *ngIf="salidaForm.get('codigoFactura')?.hasError('required')">*El campo es obligatorio</mat-error>
-        </mat-form-field>
+            <mat-form-field class="full-width mr-3" [hidden]="!salidaForm.get('descuento')?.value">
+              <input matInput placeholder="Código de Factura" formControlName="codigoFactura">
+              <mat-error *ngIf="salidaForm.get('codigoFactura')?.hasError('required')">*El campo es
+                obligatorio</mat-error>
+            </mat-form-field>
 
-        <button class="mt-3" [disabled]="formDesactivado" mat-raised-button color="primary"
-          (click)="calSalida(salidaForm.get('descuento')?.value)">Calcular Tarifa</button>
-        }
+            <button class="mt-3" [disabled]="!formDesactivado" mat-raised-button color="primary"
+              (click)="calSalida(salidaForm.get('descuento')?.value)">Calcular Tarifa</button>
+            }
 
-        <p class="full-width"
-          style="color: rgb(28, 101, 161); font-family: Georgia, 'Times New Roman', Times, serif; font-size: 15px;">
-          Valor a Pagar: {{ salidaForm.get('valorPagar')?.value | currency }}</p>
+            <p class="full-width"
+              style="color: rgb(28, 101, 161); font-family: Georgia, 'Times New Roman', Times, serif; font-size: 15px;">
+              Valor a Pagar: {{ salidaForm.get('valorPagar')?.value | currency }}</p>
 
-          <button class="mt-3" [disabled]="!formDesactivado" mat-raised-button color="primary"
-          (click)="nueSalida()">Registrar nueva salida</button>
-      </form>
-    </mat-card-content>
-  </mat-card>
-</main>
+            <button class="mt-3" [disabled]="formDesactivado" mat-raised-button color="primary" (click)="btnRegistroN()">Registrar
+              nueva salida</button>
+          </form>
+        </mat-card-content>
+      </mat-card>
+    </main>
+  </div>
+
+  <div class="col-md-8 hero">
+    <app-registro-v></app-registro-v>
+  </div>
+</div>

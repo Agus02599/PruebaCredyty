@@ -1,1 +1,35 @@
-<p>registro-v works!</p>
+<!-- registro-v.component.html -->
+<div class="container">
+    <div class="row justify-content-center">
+        <table class="table table-bordered" style="background-color: white;">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Ticked</th>
+                    <th>Placa</th>
+                    <th>Tipo de Vehículo</th>
+                    <th>Hora de Ingreso</th>
+                    <th>Minutos</th>
+                    <th>Horas</th>
+                    <th>Número de Factura</th>
+                    <th>Hora de Salida</th>
+                    <th>Valor Pagado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let registro of registros">
+                    <td>{{ registro.id }}</td>
+                    <td>{{ registro.cod }}</td>
+                    <td>{{ registro.placa }}</td>
+                    <td>{{ registro.tpVehiculo }}</td>
+                    <td>{{ registro.hIngreso }}</td>
+                    <td>{{ registro.minutos }}</td>
+                    <td>{{ registro.horas }}</td>
+                    <td>{{ registro.numFactura }}</td>
+                    <td>{{ registro.hSalida }}</td>
+                    <td>{{ registro.vPagado | currency }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

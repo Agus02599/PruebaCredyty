@@ -75,7 +75,7 @@ export class IngresoVComponent {
           Por favor, recordar el número del ticket para su retiro: ${res.cod}`,
           icon: 'success'
         });
-        console.log('Vehículo agregado exitosamente', res);
+        this.clearDatos();
       },
       error: (error) => {
         Swal.fire({
@@ -90,7 +90,11 @@ export class IngresoVComponent {
 
   }
 
-  convertirAMayusculas(event: any) {
+  clearDatos(){
+    this.ngOnInit();
+  }
+
+  convertirMayusculas(event: any) {
     const inputValue = event.target.value;
     event.target.value = inputValue.toUpperCase();
   }

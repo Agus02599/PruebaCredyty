@@ -16,6 +16,8 @@ import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 import { Vehiculos } from '../../Vehiculo';
 import { format, differenceInMinutes, differenceInHours } from 'date-fns';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { RegistroVComponent } from '../registro-v/registro-v.component';
 
 // import { DialogComponent } from 'tu-ruta-hacia-el-dialogo/dialog.component';
 
@@ -36,7 +38,7 @@ import { Router } from '@angular/router';
     MatMomentDateModule,
     FormsModule,
     MatCheckboxModule,
-    // BrowserModule,
+    RegistroVComponent,
     NgxMaterialTimepickerModule,
     // BrowserAnimationsModule
   ],
@@ -49,7 +51,8 @@ export class SalidaVComponent {
   tmVehiculos = new Vehiculos;
   fechaActual: Date = new Date(); // Obtén la fecha actual
   valorPago: number = 0;
-  formDesactivado: boolean = true; 
+  formDesactivado: boolean = true;
+  suscription!: Subscription;
 
   constructor(private fb: FormBuilder, private service: BdcyService, private dialog: MatDialog, private router: Router) {
     this.salidaForm = this.fb.group({
@@ -62,11 +65,13 @@ export class SalidaVComponent {
   }
 
   ngOnInit() {
-
+    // this.suscription = this.service.recargar$.subscribe(()=>{
+    //   this.
+    // })
   }
 
   buscarPlaca(cod: any) {
-    this.service.getVehi(cod).subscribe((res) => {
+    this.service.getVehi(cod.toUpperCase()).subscribe((res) => {
       if (cod == "" || res.length == 0) {
         Swal.fire({
           icon: 'info',
@@ -77,19 +82,24 @@ export class SalidaVComponent {
         return undefined
       } else {
         this.lisV = res;
-        this.procValor();
+        // this.procValor();
         console.log(this.lisV);
       }
     })
   }
 
 
-  procValor() {
-
+  btnRegistroN() {
+    this.salidaForm.reset();
+    this.salidaForm.enable();
+    this.formDesactivado = true;
+    this.lisV = [];
   }
 
   calSalida(sta: any) {
     if (sta) {
+      this.salidaForm.get('codigoFactura')?.addValidators(Validators.required);
+      this.salidaForm.updateValueAndValidity();
       if (this.salidaForm.valid) {
         const fechaActualFormateada = format(this.fechaActual, 'yyyy-MM-dd HH:mm');
         const minutosTranscurridos = differenceInMinutes(fechaActualFormateada, this.lisV[0].hIngreso);
@@ -143,10 +153,10 @@ export class SalidaVComponent {
 
   desControles() {
     this.salidaForm.disable();
-    this.formDesactivado = false; 
+    this.formDesactivado = false;
   }
 
-  nueSalida(){
+  nueSalida() {
     this.router.navigate([this.router.url]);
   }
 
@@ -160,8 +170,7 @@ export class SalidaVComponent {
       next: (res: any) => {
         Swal.fire({
           title: "Exitoso",
-          text: `Se ha registrado exitosamente el vehículo: ${res.placa}. 
-          Por favor, recordar el número del ticket para su retiro: ${res.cod}`,
+          text: `El valor a pagar es de: $` + this.valorPago,
           icon: 'success'
         });
       },
@@ -175,6 +184,11 @@ export class SalidaVComponent {
       }
     });
   };
+
+  convertirMayusculas(event: any) {
+    const inputValue = event.target.value;
+    event.target.value = inputValue.toUpperCase();
+  }
 }
 
 

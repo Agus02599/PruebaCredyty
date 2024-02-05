@@ -15,7 +15,7 @@
                 <mat-form-field class="full-width">
                     <mat-label>Placa</mat-label>
                     <input matInput formControlName="placa" placeholder="Ingrese la placa"
-                        (input)="convertirAMayusculas($event)">
+                        (input)="convertirMayusculas($event)">
                     <mat-error *ngIf="ingresoForm.get('placa')?.hasError('pattern')">Solo se permiten letras y
                         números</mat-error>
                     <mat-error *ngIf="ingresoForm.get('placa')?.hasError('maxlength')">La placa no puede tener más de 6
